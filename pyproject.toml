@@ -1,0 +1,8 @@
+[project]
+name = "fellow"
+requires-python = ">=3.14"
+dynamic = ["version"]
+dependencies = [
+    "discord-py>=2.7.1",
+    "python-dotenv>=1.2.2",
+]

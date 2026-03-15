@@ -3,18 +3,20 @@ run-name: ${{ github.actor }} realizou um deploy
 
 on:
   push:
-    branches: ["master"]
+    branches:
+      - "master"
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Rodando o coiso
+      - name: Running commands in the server
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.SV_IP }}
           username: ${{ secrets.SV_USER }}
           key: ${{ secrets.SV_KEY }}
-          port: 22
           script: |
-            mkdir pastinha
+            cd testapp
+            tmux kill-server || true
+            tmux new-session -d -s deployed "uv run main.py"

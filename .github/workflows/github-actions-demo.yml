@@ -17,6 +17,8 @@ jobs:
           username: ${{ secrets.SV_USER }}
           key: ${{ secrets.SV_KEY }}
           script: |
-            cd testapp
+            cd ${{ github.event.repository.name }}
+            git pull
+            
             tmux kill-server || true
-            tmux new-session -d -s deployed "uv run main.py"
+            tmux new-session -d -s ${{ github.event.repository.name }} "uv run main.py"

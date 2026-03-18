@@ -1,4 +1,4 @@
-"""O coração do bot."""
+"""O coração do bot.""" # teste
 
 import discord
 

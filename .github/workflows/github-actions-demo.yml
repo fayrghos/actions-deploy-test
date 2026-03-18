@@ -17,6 +17,8 @@ jobs:
           username: ${{ secrets.SV_USER }}
           key: ${{ secrets.SV_KEY }}
           script: |
+            set -e
+            
             cd ${{ github.event.repository.name }}
             git pull
             
